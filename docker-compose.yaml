@@ -1,0 +1,9 @@
+version: "3.1"
+services:
+  kiosk:
+    build: ./kiosk
+    command: ./init.sh
+    volumes:
+      - ./kiosk:/code
+    ports:
+      - "8080:8080"
