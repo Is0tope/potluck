@@ -2,17 +2,19 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <div class="voucher_card">
-          <img class="watson_logo small_logo" src="../assets/img/logo.png"/>
-          <div class="right-text">VOUCHER</div>
-          <hr class="divider"/>
-          <img class="qrcode" src="../assets/img/qr-code.png"/>
-          <br/>
-          <hr class="divider"/>
-          <p class="vtext"><b>SKU:</b> 1243433434</p>
-          <p class="vtext"><b>Item:</b> {{product.description}}</p>
-          <p class="vtext"><b>Discount:</b> 5% off</p>          
-        </div>
+        <transition name="fade">
+          <div v-show="show" class="voucher_card">
+            <img class="watson_logo small_logo" src="../assets/img/logo.png"/>
+            <div class="right-text">VOUCHER</div>
+            <hr class="divider"/>
+            <img class="qrcode" src="../assets/img/qr-code.png"/>
+            <br/>
+            <hr class="divider"/>
+            <p class="vtext"><b>SKU:</b> {{product.product_id}}</p>
+            <p class="vtext"><b>Item:</b> {{product.description}}</p>
+            <p class="vtext"><b>Discount:</b> 5% off</p>          
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -26,11 +28,21 @@ export default {
   name: 'Voucher',
   data: function(){
     return {
-      product: {}
+      product: {},
+      show: false
     }
   },
   mounted: function(){
+    console.log('mounted')
     this.product = Object.assign({}, this.product, store.product)
+    setTimeout(this.showvoucher,1000)
+    console.log('wow')
+  },
+  methods: {
+    showvoucher: function(){
+      console.log('show')
+      this.show = true
+    }
   }
 }
 
@@ -67,5 +79,11 @@ export default {
   }
   .vtext {
     font-size: 16pt;
+  }
+  .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 </style>

@@ -147,7 +147,8 @@ export default {
               faded: false,
               color: colors[i],
               // TODO
-              img: prodimages[c.PRODUCT_ID]
+              img: prodimages[c.PRODUCT_ID],
+              product_id: c.PRODUCT_ID
           }
         that.cardStock.push(item)
       })
