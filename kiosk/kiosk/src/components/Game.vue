@@ -38,15 +38,6 @@
 		</div>
 	</transition-group>
 </div>
-<!-- <div class="container-fluid">
-    <button v-on:click="showCards()">Show Cards</button>
-    <transition-group name="list" tag="div" class="row">
-        <div class="col-md-1" v-bind:key="'temp'"></div>
-        <div v-for="c in cards" class="col-md-2 offset-md-1 offer" v-bind:key="c.id" v-bind:class="{selected_card: c.selected, faded: c.faded}" v-on:click="selectCard(c.id)">
-            {{c.id}}
-        </div>
-    </transition-group>
-</div> -->
 </template>
 
 <script>
