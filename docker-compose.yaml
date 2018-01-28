@@ -5,5 +5,13 @@ services:
     command: ./init.sh
     volumes:
       - ./kiosk:/code
+      - ./site-library:/usr/local/lib/R/site-library
     ports:
       - "8080:8080"
+  ml:
+    build: ./ml
+    command: ["Rscript","plumb.R"]
+    volumes:
+      - ./ml:/code
+    ports:
+      - "8920:8920"

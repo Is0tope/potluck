@@ -1,20 +1,29 @@
 
 <template>
-  <video class="cameradiv" ref="video">
+<div>
+  <video v-show="!scanned" class="cameradiv" ref="video">
   </video>
+  <div v-show="scanned" class="member">
+    <p><b>Found Member: </b>{{number}}</p>
+  </div>
+</div>
 </template>
 
 <script>
 import Instascan from 'instascan'
+import bus from '../bus'
+import router from '../router'
 
 export default {
   name: 'Camera',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      number: null,
+      scanned: false
     }
   },
   mounted () {
+     let that = this
       let scanner = new Instascan.Scanner({
           video: this.$refs.video,
           scanPeriod: 10
@@ -30,6 +39,11 @@ export default {
       })
       scanner.addListener('scan', function (content) {
         console.log(content);
+        that.number = content
+        that.scanned = true
+        setTimeout(function(){
+          router.push('game')
+        },1000)
       });
   }
 }
@@ -38,7 +52,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .cameradiv {
-    width: 240px;
-    height: 240px;
+    width: 600px;
+    margin-top: 20px;
+}
+.member {
+  padding-top: 100px;
+  font-size: 40pt;
 }
 </style>

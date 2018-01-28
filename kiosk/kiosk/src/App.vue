@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-scancode text-center">
-      <h2>Potluck</h2>
+      <h1>Potluck</h1>
       <img class="watson_logo" src="./assets/img/logo.png">
     </nav>
     <router-view/>
