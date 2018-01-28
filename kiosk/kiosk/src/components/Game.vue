@@ -2,7 +2,7 @@
 <div class="container"> 
     <div>
         <h4 class="name_header">Welcome back, Jenny</h4>
-        <p>You've embarked on the <u>Weight Loss Journey</u> <i class="fas fa-chevron-circle-down"></i> <br>Click to check out our best picks and you may just find a surprise promo! </p> 
+        <p>You've embarked on the <u>Wellness Journey</u> <i class="fas fa-chevron-circle-down"></i> <br>Click to check out our best picks and you may just find a surprise promo! </p> 
     </div>
 	<transition-group name="list" tag="div" class="row">
         
@@ -19,7 +19,7 @@
                         <i class="fas fa-tag"></i>
                         <br>
                         <br>
-                        <h3>25% off {{c.description}}!</h3>
+                        <h3>5% off {{c.description}}!</h3>
                         <br>
                         <button v-on:click="claimCard(c.id)" class="offer-cta" style="color: #D12263">Claim Offer</button>
                     </div>
@@ -30,7 +30,7 @@
                         <i class="fas fa-check" style="font-size: 60pt"></i>
                         <br/>
                         <p class="offer-text"> <i class="fas fa-tag clicked"></i> And it's all yours!
-			 	        <br>25% off {{c.description}} </p>
+			 	        <br>5% off {{c.description}} </p>
                     </div>
 
                 </div>
