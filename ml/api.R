@@ -1,5 +1,5 @@
-library(tidyverse)
-library(data.table)
+library(tidyr)
+library(dplyr)
 library(recommenderlab)
 library(jsonlite)
 

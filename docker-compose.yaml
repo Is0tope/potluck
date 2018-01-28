@@ -1,5 +1,11 @@
 version: "3.1"
 services:
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
+    ports:
+      - "80:80"
   kiosk:
     build: ./kiosk
     command: ./init.sh
@@ -14,4 +20,4 @@ services:
     volumes:
       - ./ml:/code
     ports:
-      - "8920:8920"
+      - "8000:8000"

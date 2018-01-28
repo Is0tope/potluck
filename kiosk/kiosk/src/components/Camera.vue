@@ -13,13 +13,36 @@
 import Instascan from 'instascan'
 import bus from '../bus'
 import router from '../router'
-
+import Axios from 'axios'
+import store from '../store'
 export default {
   name: 'Camera',
   data () {
     return {
       number: null,
       scanned: false
+    }
+  },
+  methods: {
+    sendQuery: function(id){
+      console.log('sending query')
+      let that = this
+      Axios.get(
+        // `http://localhost:8000/recommend/$(id)`
+        '/recommend/'+id
+      ).then(function(data){
+        that.getData(data)
+      })
+      .catch(function(err){
+        console.log(err)
+      })
+    },
+    getData: function(data){
+      console.log(data)
+      store.data = JSON.parse(data.data)
+      setTimeout(function(){
+          router.push('game')
+        },1000)
     }
   },
   mounted () {
@@ -41,9 +64,7 @@ export default {
         console.log(content);
         that.number = content
         that.scanned = true
-        setTimeout(function(){
-          router.push('game')
-        },1000)
+        that.sendQuery(content)
       });
   }
 }
